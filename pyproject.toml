@@ -1,13 +1,13 @@
 [build-system]
-requires = ["setuptools>=45", "wheel"]
+requires = ["setuptools>=61", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "sql-splitter"
-version = "6.0.0"
+version = "6.0.1"
 description = "Advanced MySQL SQL Parser with Visualization Component Support"
 readme = "README.md"
-license = {text = "MIT"}
+license = "MIT"
 authors = [
     {name = "SQL Splitter Team", email = "contact@sqlsplitter.dev"}
 ]
@@ -18,7 +18,6 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Database",
     "Topic :: Text Processing :: Linguistic",
-    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8", 
@@ -53,3 +52,4 @@ sql-splitter = "sql_splitter.core.sql_parser_ast_v6_0:main"
 [tool.setuptools]
 packages = ["sql_splitter", "sql_splitter.core"]
 include-package-data = true
+license-files = ["LICENSE"]

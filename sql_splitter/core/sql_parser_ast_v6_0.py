@@ -183,9 +183,9 @@ class SQLParserAST:
         # 🎯 Extract JOINs from AST  
         joins = self._extract_joins_from_ast(ast_tree)
         
-        # Create enhanced result with visualization support
-        return self._create_enhanced_visualization_output(
-            tables, joins, fields, where_conditions, sql
+        # 🚨 FIXED: Use ContentExtractor's create_expect_md_output for correct aggregation
+        return self.content_extractor.create_expect_md_output(
+            tables, joins, fields, where_conditions
         )
 
     def _extract_tables_from_ast(self, ast_tree: QueryNode) -> List[str]:

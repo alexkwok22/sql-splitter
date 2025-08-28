@@ -1,0 +1,629 @@
+{
+  "test_summary": {
+    "test_timestamp": "2025-08-28 11:16:40",
+    "parser_version": "6.0_corrected_validation",
+    "total_queries": 7,
+    "success_rate": 100.0,
+    "structure_compliance_rate": 100.0,
+    "total_stats": {
+      "total_queries": 7,
+      "successful_parses": 7,
+      "structure_compliant": 7,
+      "tables_detected": 16,
+      "joins_detected": 8,
+      "fields_detected": 65,
+      "where_detected": 0,
+      "field_table_associations": 61
+    }
+  },
+  "detailed_results": {
+    "momo_mv_item": {
+      "success": true,
+      "tables": 4,
+      "joins": 3,
+      "fields": 20,
+      "where_conditions": 0,
+      "field_table_associations": 20,
+      "execution_time": 0.06592655181884766,
+      "parser_output": {
+        "success": true,
+        "fields": [
+          {
+            "table": "mt_item",
+            "field": "DATE_FORMAT(mt_item.iCreateT, '%Y-%m')",
+            "alias": "i_month",
+            "groupBy": false
+          },
+          {
+            "table": "mt_item",
+            "field": "mt_item.DetailsID",
+            "alias": "DetailsID",
+            "groupBy": false
+          },
+          {
+            "table": "mt_item",
+            "field": "mt_item.Details_OrderID",
+            "alias": "Details_OrderID",
+            "groupBy": false
+          },
+          {
+            "table": "mt_item",
+            "field": "mt_item.iType",
+            "alias": "iType",
+            "groupBy": false
+          },
+          {
+            "table": "mt_item",
+            "field": "mt_item.iDesc",
+            "alias": "iDesc",
+            "groupBy": false
+          },
+          {
+            "table": "mt_item",
+            "field": "mt_item.iLink",
+            "alias": "iLink",
+            "groupBy": false
+          },
+          {
+            "table": "mt_item",
+            "field": "mt_item.iQty",
+            "alias": "iQty",
+            "groupBy": false
+          },
+          {
+            "table": "mt_item",
+            "field": "mt_item.iPrice",
+            "alias": "iPrice",
+            "groupBy": false
+          },
+          {
+            "table": "mt_item",
+            "field": "mt_item.iStatus",
+            "alias": "iStatus",
+            "groupBy": false
+          },
+          {
+            "table": "mt_item",
+            "field": "mt_item.iUpdateT",
+            "alias": "iUpdateT",
+            "groupBy": false
+          },
+          {
+            "table": "mv_item_type_desc",
+            "field": "mv_item_type_desc.DESC_NAME",
+            "alias": "Type_Name",
+            "groupBy": false
+          },
+          {
+            "table": "mv_item_status_desc",
+            "field": "mv_item_status_desc.DESC_NAME",
+            "alias": "Status_NAME",
+            "groupBy": false
+          },
+          {
+            "table": "mv_item_status_desc",
+            "field": "mv_item_status_desc.Remarks",
+            "alias": "Remarks",
+            "groupBy": false
+          },
+          {
+            "table": "mv_order",
+            "field": "mv_order.Customer",
+            "alias": "Customer",
+            "groupBy": false
+          },
+          {
+            "table": "mv_order",
+            "field": "mv_order.Order_Status_Name",
+            "alias": "Order_status_name",
+            "groupBy": false
+          },
+          {
+            "table": "mv_order",
+            "field": "mv_order.Order_Status",
+            "alias": "Order_Status",
+            "groupBy": false
+          },
+          {
+            "table": "mt_item",
+            "field": "mt_item.iPic",
+            "alias": "iPic",
+            "groupBy": false
+          },
+          {
+            "table": "mt_item",
+            "field": "mt_item.igroup",
+            "alias": "iGroup",
+            "groupBy": false
+          },
+          {
+            "table": "mt_item",
+            "field": "mt_item.iTrack",
+            "alias": "iTrack",
+            "groupBy": false
+          },
+          {
+            "table": "mv_item_status_desc",
+            "field": "IF(mv_item_status_desc.Remarks = 'finish', 1, 0)",
+            "alias": "finish",
+            "groupBy": false
+          }
+        ],
+        "tables": [
+          "mt_item",
+          "mv_item_status_desc",
+          "mv_item_type_desc",
+          "mv_order"
+        ],
+        "joins": [
+          {
+            "type": "INNER",
+            "leftTable": "mt_item",
+            "leftField": "Details_OrderID",
+            "rightTable": "mv_order",
+            "rightField": "OrderID",
+            "condition": "mt_item.Details_OrderID = mv_order.OrderID LEFT JOIN mv_item_status_desc on mt_item.iType = mv_item_status_desc.Item_Type LEFT JOIN mv_item_type_desc on mt_item.iType = mv_item_type_desc.DESC_CODE"
+          },
+          {
+            "type": "LEFT",
+            "leftTable": "mv_item_type_desc",
+            "leftField": "",
+            "rightTable": "mv_item_status_desc",
+            "rightField": "",
+            "condition": ""
+          },
+          {
+            "type": "LEFT",
+            "leftTable": "mt_item",
+            "leftField": "",
+            "rightTable": "mv_item_type_desc",
+            "rightField": "",
+            "condition": ""
+          }
+        ],
+        "whereConditions": [],
+        "parser": "sqlsplit"
+      }
+    },
+    "momo_mv_item_status_desc": {
+      "success": true,
+      "tables": 1,
+      "joins": 0,
+      "fields": 6,
+      "where_conditions": 0,
+      "field_table_associations": 6,
+      "execution_time": 0.0023415088653564453,
+      "parser_output": {
+        "success": true,
+        "fields": [
+          {
+            "table": "mt_status_desc",
+            "field": "mt_status_desc.Desc_ID",
+            "alias": "Desc_ID",
+            "groupBy": false
+          },
+          {
+            "table": "mt_status_desc",
+            "field": "mt_status_desc.DESC_NAME",
+            "alias": "DESC_NAME",
+            "groupBy": false
+          },
+          {
+            "table": "mt_status_desc",
+            "field": "mt_status_desc.DESC_CODE",
+            "alias": "DESC_CODE",
+            "groupBy": false
+          },
+          {
+            "table": "mt_status_desc",
+            "field": "mt_status_desc.FOR_TABLE",
+            "alias": "FOR_TABLE",
+            "groupBy": false
+          },
+          {
+            "table": "mt_status_desc",
+            "field": "mt_status_desc.Remarks",
+            "alias": "Remarks",
+            "groupBy": false
+          },
+          {
+            "table": "mt_status_desc",
+            "field": "mt_status_desc.Item_Type",
+            "alias": "Item_Type",
+            "groupBy": false
+          }
+        ],
+        "tables": [
+          "mt_status_desc"
+        ],
+        "joins": [],
+        "whereConditions": [],
+        "parser": "sqlsplit"
+      }
+    },
+    "momo_mv_order": {
+      "success": true,
+      "tables": 2,
+      "joins": 1,
+      "fields": 18,
+      "where_conditions": 0,
+      "field_table_associations": 18,
+      "execution_time": 0.006572723388671875,
+      "parser_output": {
+        "success": true,
+        "fields": [
+          {
+            "table": "mt_order",
+            "field": "DATE_FORMAT(mt_order.oCreateT, '%Y-%m')",
+            "alias": "o_month",
+            "groupBy": false
+          },
+          {
+            "table": "mt_order",
+            "field": "DATE_FORMAT(mt_order.oCreateT, '%Y-%m-%d %a')",
+            "alias": "o_date",
+            "groupBy": false
+          },
+          {
+            "table": "mt_order",
+            "field": "mt_order.OrderID",
+            "alias": "OrderID",
+            "groupBy": false
+          },
+          {
+            "table": "mt_order",
+            "field": "mt_order.Customer",
+            "alias": "Customer",
+            "groupBy": false
+          },
+          {
+            "table": "mt_order",
+            "field": "mt_order.oDesc",
+            "alias": "oDesc",
+            "groupBy": false
+          },
+          {
+            "table": "mt_order",
+            "field": "mt_order.oPayMethod",
+            "alias": "oPayMethod",
+            "groupBy": false
+          },
+          {
+            "table": "mt_order",
+            "field": "mt_order.oTotalPrice",
+            "alias": "oTotalPrice",
+            "groupBy": false
+          },
+          {
+            "table": "mt_order",
+            "field": "mt_order.oPaidPrice",
+            "alias": "oPaidPrice",
+            "groupBy": false
+          },
+          {
+            "table": "mt_order",
+            "field": "mt_order.oStatus",
+            "alias": "oStatus",
+            "groupBy": false
+          },
+          {
+            "table": "mt_order",
+            "field": "mt_order.oCreateT",
+            "alias": "oCreateT",
+            "groupBy": false
+          },
+          {
+            "table": "mt_order",
+            "field": "mt_order.oUpdateT",
+            "alias": "oUpdateT",
+            "groupBy": false
+          },
+          {
+            "table": "mv_order_status_desc",
+            "field": "mv_order_status_desc.DESC_NAME",
+            "alias": "Order_Status_Name",
+            "groupBy": false
+          },
+          {
+            "table": "mv_order_status_desc",
+            "field": "mv_order_status_desc.Remarks",
+            "alias": "Remarks",
+            "groupBy": false
+          },
+          {
+            "table": "mt_order",
+            "field": "mt_order.oDeleted",
+            "alias": "oDeleted",
+            "groupBy": false
+          },
+          {
+            "table": "mv_order_status_desc",
+            "field": "IF(mv_order_status_desc.Remarks = 'finish', 1, 0)",
+            "alias": "finish",
+            "groupBy": false
+          },
+          {
+            "table": "mt_order",
+            "field": "mt_order.oEditT",
+            "alias": "oEditT",
+            "groupBy": false
+          },
+          {
+            "table": "mt_order",
+            "field": "mt_order.oRemark",
+            "alias": "oRemark",
+            "groupBy": false
+          },
+          {
+            "table": "mt_order",
+            "field": "mt_order.Order_Status",
+            "alias": "Order_Status",
+            "groupBy": false
+          }
+        ],
+        "tables": [
+          "mt_order",
+          "mv_order_status_desc"
+        ],
+        "joins": [
+          {
+            "type": "LEFT",
+            "leftTable": "mt_order",
+            "leftField": "Order_Status",
+            "rightTable": "mv_order_status_desc",
+            "rightField": "DESC_CODE",
+            "condition": "mt_order.Order_Status = mv_order_status_desc.DESC_CODE"
+          }
+        ],
+        "whereConditions": [],
+        "parser": "sqlsplit"
+      }
+    },
+    "momo_v_game": {
+      "success": true,
+      "tables": 3,
+      "joins": 1,
+      "fields": 11,
+      "where_conditions": 0,
+      "field_table_associations": 11,
+      "execution_time": 0.004716634750366211,
+      "parser_output": {
+        "success": true,
+        "fields": [
+          {
+            "table": "mt_game_header",
+            "field": "mt_game_header.id_game",
+            "alias": "id_game",
+            "groupBy": false
+          },
+          {
+            "table": "mt_game_header",
+            "field": "mt_game_header.Create_datetime",
+            "alias": "Create_datetime",
+            "groupBy": false
+          },
+          {
+            "table": "mt_game_header",
+            "field": "mt_game_header.Created_by",
+            "alias": "Created_by",
+            "groupBy": false
+          },
+          {
+            "table": "mt_game_header",
+            "field": "mt_game_header.title",
+            "alias": "title",
+            "groupBy": false
+          },
+          {
+            "table": "mt_game_header",
+            "field": "mt_game_header.option_i",
+            "alias": "option_i",
+            "groupBy": false
+          },
+          {
+            "table": "mt_game_header",
+            "field": "mt_game_header.option_vs",
+            "alias": "option_vs",
+            "groupBy": false
+          },
+          {
+            "table": "mt_game_details",
+            "field": "mt_game_details.id_gameDetails",
+            "alias": "id_gameDetails",
+            "groupBy": false
+          },
+          {
+            "table": "mt_game_details",
+            "field": "mt_game_details.d_Create_datetime",
+            "alias": "d_Create_datetime",
+            "groupBy": false
+          },
+          {
+            "table": "mt_game_details",
+            "field": "mt_game_details.d_Created_by",
+            "alias": "d_Created_by",
+            "groupBy": false
+          },
+          {
+            "table": "mt_game_details",
+            "field": "mt_game_details.selected",
+            "alias": "selected",
+            "groupBy": false
+          },
+          {
+            "table": "mt_game_link",
+            "field": "mt_game_link.id_link",
+            "alias": "id_link",
+            "groupBy": false
+          }
+        ],
+        "tables": [
+          "mt_game_details",
+          "mt_game_header",
+          "mt_game_link"
+        ],
+        "joins": [
+          {
+            "type": "LEFT",
+            "leftTable": "mt_game_header",
+            "leftField": "id_game",
+            "rightTable": "mt_game_details",
+            "rightField": "id_game",
+            "condition": "mt_game_header.id_game = mt_game_details.id_game"
+          }
+        ],
+        "whereConditions": [],
+        "parser": "sqlsplit"
+      }
+    },
+    "simple_test_1": {
+      "success": true,
+      "tables": 1,
+      "joins": 0,
+      "fields": 4,
+      "where_conditions": 0,
+      "field_table_associations": 0,
+      "execution_time": 0.0025713443756103516,
+      "parser_output": {
+        "success": true,
+        "fields": [
+          {
+            "table": "",
+            "field": "customer_id",
+            "alias": "customer_id",
+            "groupBy": false
+          },
+          {
+            "table": "",
+            "field": "first_name",
+            "alias": "first_name",
+            "groupBy": false
+          },
+          {
+            "table": "",
+            "field": "last_name",
+            "alias": "last_name",
+            "groupBy": false
+          },
+          {
+            "table": "",
+            "field": "email",
+            "alias": "email",
+            "groupBy": false
+          }
+        ],
+        "tables": [
+          "customers"
+        ],
+        "joins": [],
+        "whereConditions": [],
+        "parser": "sqlsplit"
+      }
+    },
+    "simple_test_2": {
+      "success": true,
+      "tables": 2,
+      "joins": 1,
+      "fields": 3,
+      "where_conditions": 0,
+      "field_table_associations": 3,
+      "execution_time": 0.0027229785919189453,
+      "parser_output": {
+        "success": true,
+        "fields": [
+          {
+            "table": "orders",
+            "field": "o.order_id",
+            "alias": "order_id",
+            "groupBy": false
+          },
+          {
+            "table": "orders",
+            "field": "o.total_amount",
+            "alias": "total_amount",
+            "groupBy": false
+          },
+          {
+            "table": "customers",
+            "field": "c.customer_name",
+            "alias": "customer_name",
+            "groupBy": false
+          }
+        ],
+        "tables": [
+          "customers",
+          "orders"
+        ],
+        "joins": [
+          {
+            "type": "JOIN",
+            "leftTable": "o",
+            "leftField": "customer_id",
+            "rightTable": "customers",
+            "rightField": "customer_id",
+            "condition": "o.customer_id = c.customer_id"
+          }
+        ],
+        "whereConditions": [],
+        "parser": "sqlsplit"
+      }
+    },
+    "complex_joins": {
+      "success": true,
+      "tables": 3,
+      "joins": 2,
+      "fields": 3,
+      "where_conditions": 0,
+      "field_table_associations": 3,
+      "execution_time": 0.0070552825927734375,
+      "parser_output": {
+        "success": true,
+        "fields": [
+          {
+            "table": "products",
+            "field": "p.product_name",
+            "alias": "product_name",
+            "groupBy": false
+          },
+          {
+            "table": "categories",
+            "field": "c.category_name",
+            "alias": "category_name",
+            "groupBy": false
+          },
+          {
+            "table": "suppliers",
+            "field": "s.supplier_name",
+            "alias": "supplier_name",
+            "groupBy": false
+          }
+        ],
+        "tables": [
+          "categories",
+          "products",
+          "suppliers"
+        ],
+        "joins": [
+          {
+            "type": "LEFT",
+            "leftTable": "p",
+            "leftField": "supplier_id",
+            "rightTable": "suppliers",
+            "rightField": "supplier_id",
+            "condition": "p.supplier_id = s.supplier_id"
+          },
+          {
+            "type": "INNER",
+            "leftTable": "p",
+            "leftField": "category_id",
+            "rightTable": "categories",
+            "rightField": "category_id",
+            "condition": "p.category_id = c.category_id"
+          }
+        ],
+        "whereConditions": [],
+        "parser": "sqlsplit"
+      }
+    }
+  }
+}

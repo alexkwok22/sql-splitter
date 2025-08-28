@@ -1,0 +1,244 @@
+{
+  "test_summary": {
+    "test_timestamp": "2025-08-28 10:40:38",
+    "parser_version": "6.0_integration_fixed",
+    "total_queries": 11,
+    "success_rate": 100.0,
+    "structure_compliance_rate": 100.0,
+    "total_stats": {
+      "total_queries": 11,
+      "successful_parses": 11,
+      "structure_compliant": 11,
+      "tables_detected": 11,
+      "joins_detected": 0,
+      "fields_detected": 0,
+      "where_detected": 0,
+      "field_table_associations": 0
+    }
+  },
+  "detailed_results": {
+    "momo_mv_item": {
+      "success": true,
+      "tables": 1,
+      "joins": 0,
+      "fields": 0,
+      "where_conditions": 0,
+      "field_table_associations": 0,
+      "execution_time": 0.03834128379821777,
+      "parser_output": {
+        "success": true,
+        "fields": [],
+        "tables": [
+          "mt_item"
+        ],
+        "joins": [],
+        "whereConditions": [],
+        "parser": "sqlsplit"
+      }
+    },
+    "momo_mv_item_status_desc": {
+      "success": true,
+      "tables": 1,
+      "joins": 0,
+      "fields": 0,
+      "where_conditions": 0,
+      "field_table_associations": 0,
+      "execution_time": 0.002254962921142578,
+      "parser_output": {
+        "success": true,
+        "fields": [],
+        "tables": [
+          "mt_status_desc"
+        ],
+        "joins": [],
+        "whereConditions": [],
+        "parser": "sqlsplit"
+      }
+    },
+    "momo_mv_item_type_desc": {
+      "success": true,
+      "tables": 1,
+      "joins": 0,
+      "fields": 0,
+      "where_conditions": 0,
+      "field_table_associations": 0,
+      "execution_time": 0.0010211467742919922,
+      "parser_output": {
+        "success": true,
+        "fields": [],
+        "tables": [
+          "mt_status_desc"
+        ],
+        "joins": [],
+        "whereConditions": [],
+        "parser": "sqlsplit"
+      }
+    },
+    "momo_mv_order": {
+      "success": true,
+      "tables": 1,
+      "joins": 0,
+      "fields": 0,
+      "where_conditions": 0,
+      "field_table_associations": 0,
+      "execution_time": 0.001585245132446289,
+      "parser_output": {
+        "success": true,
+        "fields": [],
+        "tables": [
+          "mt_order"
+        ],
+        "joins": [],
+        "whereConditions": [],
+        "parser": "sqlsplit"
+      }
+    },
+    "momo_mv_order_status_desc": {
+      "success": true,
+      "tables": 1,
+      "joins": 0,
+      "fields": 0,
+      "where_conditions": 0,
+      "field_table_associations": 0,
+      "execution_time": 0.0015189647674560547,
+      "parser_output": {
+        "success": true,
+        "fields": [],
+        "tables": [
+          "mt_status_desc"
+        ],
+        "joins": [],
+        "whereConditions": [],
+        "parser": "sqlsplit"
+      }
+    },
+    "momo_mv_schedule": {
+      "success": true,
+      "tables": 1,
+      "joins": 0,
+      "fields": 0,
+      "where_conditions": 0,
+      "field_table_associations": 0,
+      "execution_time": 0.0013396739959716797,
+      "parser_output": {
+        "success": true,
+        "fields": [],
+        "tables": [
+          "mt_schedule"
+        ],
+        "joins": [],
+        "whereConditions": [],
+        "parser": "sqlsplit"
+      }
+    },
+    "momo_mv_weekdays": {
+      "success": true,
+      "tables": 1,
+      "joins": 0,
+      "fields": 0,
+      "where_conditions": 0,
+      "field_table_associations": 0,
+      "execution_time": 0.0015435218811035156,
+      "parser_output": {
+        "success": true,
+        "fields": [],
+        "tables": [
+          "mt_status_desc"
+        ],
+        "joins": [],
+        "whereConditions": [],
+        "parser": "sqlsplit"
+      }
+    },
+    "momo_mv_test": {
+      "success": true,
+      "tables": 1,
+      "joins": 0,
+      "fields": 0,
+      "where_conditions": 0,
+      "field_table_associations": 0,
+      "execution_time": 0.0013866424560546875,
+      "parser_output": {
+        "success": true,
+        "fields": [],
+        "tables": [
+          "mt_test"
+        ],
+        "joins": [],
+        "whereConditions": [],
+        "parser": "sqlsplit"
+      }
+    },
+    "momo_mv_tracking": {
+      "success": true,
+      "tables": 1,
+      "joins": 0,
+      "fields": 0,
+      "where_conditions": 0,
+      "field_table_associations": 0,
+      "execution_time": 0.0011744499206542969,
+      "parser_output": {
+        "success": true,
+        "fields": [],
+        "tables": [
+          "mt_tracking"
+        ],
+        "joins": [],
+        "whereConditions": [],
+        "parser": "sqlsplit"
+      }
+    },
+    "momo_v_cost": {
+      "success": true,
+      "tables": 1,
+      "joins": 0,
+      "fields": 0,
+      "where_conditions": 0,
+      "field_table_associations": 0,
+      "execution_time": 0.0016071796417236328,
+      "parser_output": {
+        "success": true,
+        "fields": [],
+        "tables": [
+          "t_cost"
+        ],
+        "joins": [],
+        "whereConditions": [],
+        "parser": "sqlsplit"
+      }
+    },
+    "momo_v_game": {
+      "success": true,
+      "tables": 1,
+      "joins": 0,
+      "fields": 0,
+      "where_conditions": 0,
+      "field_table_associations": 0,
+      "execution_time": 0.001035928726196289,
+      "parser_output": {
+        "success": true,
+        "fields": [],
+        "tables": [
+          "mt_game_header"
+        ],
+        "joins": [],
+        "whereConditions": [],
+        "parser": "sqlsplit"
+      }
+    }
+  },
+  "perfect_queries": [
+    "momo_mv_item",
+    "momo_mv_item_status_desc",
+    "momo_mv_item_type_desc",
+    "momo_mv_order",
+    "momo_mv_order_status_desc",
+    "momo_mv_schedule",
+    "momo_mv_weekdays",
+    "momo_mv_test",
+    "momo_mv_tracking",
+    "momo_v_cost",
+    "momo_v_game"
+  ],
+  "issues": []
+}

@@ -19,7 +19,7 @@ setup(
     long_description_content_type='text/markdown',
     author='SQL Splitter Team',
     author_email='contact@sqlsplitter.dev',
-    url='https://github.com/yourusername/sql-splitter',
+    url='https://github.com/alexkwok22/sql-splitter',
     license='MIT',
     
     packages=find_packages(),
@@ -67,8 +67,8 @@ setup(
     },
     
     project_urls={
-        'Bug Reports': 'https://github.com/yourusername/sql-splitter/issues',
-        'Source': 'https://github.com/yourusername/sql-splitter',
-        'Documentation': 'https://github.com/yourusername/sql-splitter/blob/main/docs/',
+        'Bug Reports': 'https://github.com/alexkwok22/sql-splitter/issues',
+        'Source': 'https://github.com/alexkwok22/sql-splitter',
+        'Documentation': 'https://github.com/alexkwok22/sql-splitter/blob/main/docs/',
     },
 )

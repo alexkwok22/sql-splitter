@@ -30,10 +30,10 @@ requires-python = ">=3.7"
 dependencies = []
 
 [project.urls]
-Homepage = "https://github.com/YOUR_GITHUB_USERNAME/sql-splitter"
-Documentation = "https://github.com/YOUR_GITHUB_USERNAME/sql-splitter/blob/main/docs/"
-Repository = "https://github.com/YOUR_GITHUB_USERNAME/sql-splitter"
-"Bug Reports" = "https://github.com/YOUR_GITHUB_USERNAME/sql-splitter/issues"
+Homepage = "https://github.com/alexkwok22/sql-splitter"
+Documentation = "https://github.com/alexkwok22/sql-splitter/blob/main/docs/"
+Repository = "https://github.com/alexkwok22/sql-splitter"
+"Bug Reports" = "https://github.com/alexkwok22/sql-splitter/issues"
 
 [project.optional-dependencies]
 dev = [

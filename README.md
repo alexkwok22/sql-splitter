@@ -4,7 +4,7 @@ Advanced MySQL SQL Parser with Visualization Component Support
 
 [![Python Version](https://img.shields.io/badge/python-3.7%2B-blue.svg)](https://python.org)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-6.0.0-orange.svg)](https://github.com/yourusername/sql-splitter)
+[![Version](https://img.shields.io/badge/version-6.0.0-orange.svg)](https://github.com/alexkwok22/sql-splitter)
 
 ## 🚀 Features
 
@@ -25,7 +25,7 @@ pip install sql-splitter
 Or install from source:
 
 ```bash
-git clone https://github.com/yourusername/sql-splitter.git
+git clone https://github.com/alexkwok22/sql-splitter.git
 cd sql-splitter
 pip install -e .
 ```

@@ -201,6 +201,7 @@ jobs:
 ### **1. 更新文檔**
 - 更新 README.md 的安裝說明
 - 添加 PyPI badge: `[![PyPI version](https://badge.fury.io/py/sql-splitter.svg)](https://badge.fury.io/py/sql-splitter)`
+- GitHub 項目地址: https://github.com/alexkwok22/sql-splitter
 
 ### **2. 宣傳推廣**
 - 在 GitHub 創建 Release

@@ -414,6 +414,50 @@ class ContentExtractor:
         
         return group_by_fields
 
+    def extract_where_conditions(self, sql: str) -> List[str]:
+        """🔧 FIXED: Extract WHERE conditions from SQL query"""
+        where_conditions = []
+        
+        # Find WHERE clause - Fixed regex pattern
+        where_pattern = r'\bWHERE\s+(.*?)(?:\s+(?:GROUP\s+BY|ORDER\s+BY|HAVING|LIMIT)|$)'
+        where_match = re.search(where_pattern, sql, re.IGNORECASE | re.DOTALL)
+        
+        if not where_match:
+            return where_conditions
+        
+        where_clause = where_match.group(1).strip()
+        if not where_clause:
+            return where_conditions
+        
+        # Split conditions by AND/OR
+        # Simple approach: split by AND/OR but preserve the operators
+        condition_parts = re.split(r'\s+(AND|OR)\s+', where_clause, flags=re.IGNORECASE)
+        
+        current_condition = ""
+        for part in condition_parts:
+            part = part.strip()
+            if part.upper() in ['AND', 'OR']:
+                if current_condition:
+                    where_conditions.append(current_condition.strip())
+                    current_condition = ""
+            else:
+                current_condition += part + " "
+        
+        # Add the last condition
+        if current_condition.strip():
+            where_conditions.append(current_condition.strip())
+        
+        # Clean up conditions - remove backticks and database prefixes
+        cleaned_conditions = []
+        for condition in where_conditions:
+            # Remove backticks
+            condition = re.sub(r'`([^`]+)`', r'\1', condition)
+            # Keep the condition as is for now
+            if condition and condition not in cleaned_conditions:
+                cleaned_conditions.append(condition)
+        
+        return cleaned_conditions
+
     def set_context(self, table_aliases: Dict[str, str], database_name: str = "", detected_databases: Set[str] = None):
         """Set extraction context from other components"""
         self.table_aliases = table_aliases.copy()

@@ -435,6 +435,7 @@ class MySQLCompatibleNormalizer:
             applied_rules = ["minimal_mysql_normalization"]
         
         print(f"✅ MySQL normalized (rules: {len(applied_rules)}, valid: {is_valid})")
+        print(f"🔍 Normalized SQL: {normalized_sql}")
         
         return normalized_sql, applied_rules, validation_errors
 

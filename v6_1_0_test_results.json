@@ -1,0 +1,77 @@
+{
+  "test_summary": {
+    "version_tested": "6.1.0",
+    "test_timestamp": "2025-08-28 12:36:27",
+    "total_tests": 4,
+    "passed_tests": 4,
+    "success_rate": 100.0,
+    "average_execution_time": 0.06037569046020508,
+    "assessment": "EXCELLENT"
+  },
+  "detailed_results": [
+    {
+      "test_name": "Simple SELECT",
+      "success": true,
+      "test_passed": true,
+      "execution_time": 0.19725561141967773,
+      "actual_counts": {
+        "fields": 3,
+        "tables": 1,
+        "joins": 0
+      },
+      "expected_counts": {
+        "fields": 3,
+        "tables": 1,
+        "joins": 0
+      }
+    },
+    {
+      "test_name": "JOIN Query",
+      "success": true,
+      "test_passed": true,
+      "execution_time": 0.011749744415283203,
+      "actual_counts": {
+        "fields": 3,
+        "tables": 2,
+        "joins": 1
+      },
+      "expected_counts": {
+        "fields": 3,
+        "tables": 2,
+        "joins": 1
+      }
+    },
+    {
+      "test_name": "Complex Momo Query",
+      "success": true,
+      "test_passed": true,
+      "execution_time": 0.020395278930664062,
+      "actual_counts": {
+        "fields": 20,
+        "tables": 4,
+        "joins": 3
+      },
+      "expected_counts": {
+        "fields": 20,
+        "tables": 4,
+        "joins": 3
+      }
+    },
+    {
+      "test_name": "Multi-JOIN with Aggregation",
+      "success": true,
+      "test_passed": true,
+      "execution_time": 0.012102127075195312,
+      "actual_counts": {
+        "fields": 4,
+        "tables": 3,
+        "joins": 2
+      },
+      "expected_counts": {
+        "fields": 4,
+        "tables": 3,
+        "joins": 2
+      }
+    }
+  ]
+}

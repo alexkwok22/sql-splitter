@@ -1,5 +1,5 @@
 """
-SQL Parser AST v6.0 - Complete Context-Aware Implementation
+SQL Parser AST v6.1.0 - Complete Context-Aware Implementation
 
 🎯 100% expect.md compliance with robust context-aware extraction
 🐬 Integrated MySQL normalization for enhanced compatibility

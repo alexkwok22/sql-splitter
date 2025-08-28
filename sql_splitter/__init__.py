@@ -42,7 +42,7 @@ SQL Splitter - Advanced MySQL SQL Parser for Visualization Components
 from .core.sql_parser_ast_v6_0 import SQLParserAST, parse_sql, parse_sql_to_json
 from .core.sql_normalizer_mysql import MySQLCompatibleNormalizer, normalize_sql_query
 
-__version__ = "6.0.0"
+__version__ = "6.1.0"
 __author__ = "SQL Splitter Team"
 __description__ = "Advanced MySQL SQL Parser with Visualization Component Support"
 

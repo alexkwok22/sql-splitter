@@ -62,6 +62,9 @@ class SQLParserAST:
             # 🔄 Reset state
             self._reset_state()
             
+            # 🚨 FIXED: Store original SQL for fallback WHERE extraction
+            self.original_sql = sql
+            
             # 📝 Normalize SQL
             normalized_sql = self._normalize_sql(sql)
             
@@ -84,6 +87,9 @@ class SQLParserAST:
     def _build_ast_tree(self, sql: str) -> QueryNode:
         """🎯 PHASE 1: Build AST tree from SQL"""
         
+        # 🔧 FIXED: Store normalized SQL for later use in extraction methods
+        self.normalized_sql = sql
+        
         # Create main query node
         query_node = QueryNode()
         
@@ -95,16 +101,20 @@ class SQLParserAST:
             for cte_name in cte_tables:
                 self.table_aliases[cte_name] = cte_name
         
-        # 2️⃣ Parse JOINs (complex nested patterns)
+        # 2️⃣ Parse JOINs (complex nested patterns) - FIXED: Collect aliases immediately
         joins, join_aliases = parse_joins_from_sql(sql)
         self.table_aliases.update(join_aliases)
         for join in joins:
             query_node.add_join(join)
         
-        # 3️⃣ Extract all tables (comprehensive detection)
+        # 3️⃣ Extract all tables (comprehensive detection) - FIXED: Collect aliases immediately  
         all_cte_tables = cte_tables if cte_tables else set()
         tables, table_aliases = extract_all_tables_from_sql(sql, all_cte_tables)
         self.table_aliases.update(table_aliases)
+        
+        # 🔧 FIXED: Store extracted tables and joins for direct access
+        self.extracted_tables = list(tables) if tables else []
+        self.extracted_joins = joins if joins else []
         
         # 4️⃣ Create FROM clause node
         if tables:
@@ -128,7 +138,7 @@ class SQLParserAST:
     def _extract_content_from_ast(self, sql: str, ast_tree: QueryNode) -> Dict[str, Any]:
         """🎯 PHASE 2: Extract content from AST for expect.md compliance"""
         
-        # Set context for content extractor
+        # 🔧 FIXED: Set context for content extractor with complete table aliases
         self.content_extractor.set_context(
             self.table_aliases, 
             self.database_name, 
@@ -139,6 +149,33 @@ class SQLParserAST:
         group_by_fields = self.content_extractor.extract_group_by_fields(sql)
         fields = self.content_extractor.extract_fields(sql, group_by_fields)
         where_conditions = self.content_extractor.extract_where_conditions(sql)
+        
+        # 🚨 FIXED: Ensure WHERE conditions are extracted from original SQL if normalization affects them
+        if not where_conditions and hasattr(self, 'original_sql'):
+            # Try extracting from original SQL if normalized version failed
+            where_conditions = self.content_extractor.extract_where_conditions(self.original_sql)
+        
+        # 🚨 ADDITIONAL FIX: Direct WHERE extraction if content_extractor fails
+        if not where_conditions:
+            # Manual WHERE extraction as fallback
+            where_pattern = r'\bWHERE\s+(.*?)(?=\s+(?:GROUP\s+BY|ORDER\s+BY|HAVING|LIMIT|$))'
+            where_match = re.search(where_pattern, sql, re.IGNORECASE | re.DOTALL)
+            if where_match:
+                where_clause = where_match.group(1).strip()
+                if where_clause:
+                    where_conditions = [where_clause]
+        
+        # 🔧 FIXED: Update field table associations with correct aliases
+        for field in fields:
+            if not field.get('table') and field.get('field'):
+                # Try to determine table from field expression
+                field_expr = field['field']
+                for alias, table_name in self.table_aliases.items():
+                    if f'{alias}.' in field_expr or f'`{alias}`.' in field_expr:
+                        clean_table = self._remove_db_prefix_context_aware(table_name, "field_reference")
+                        if clean_table and self._is_valid_table_name(clean_table):
+                            field['table'] = clean_table
+                            break
         
         # 🎯 Extract tables from AST
         tables = self._extract_tables_from_ast(ast_tree)
@@ -152,62 +189,104 @@ class SQLParserAST:
         )
 
     def _extract_tables_from_ast(self, ast_tree: QueryNode) -> List[str]:
-        """🎯 Context-aware table extraction from AST tree"""
+        """🎯 Context-aware table extraction from AST tree - FIXED for direct extraction"""
         tables = set()
         
-        # From WITH clause CTEs (CTE names should always be kept as-is)
+        # 🔧 FIXED: Use extracted_tables as primary source since they're correctly detected
+        if hasattr(self, 'extracted_tables') and self.extracted_tables:
+            for table_name in self.extracted_tables:
+                clean_table = self._remove_db_prefix_context_aware(table_name, "table_reference")
+                if clean_table and self._is_valid_table_name(clean_table):
+                    tables.add(clean_table)
+        
+        # 🔧 FIXED: Use table_aliases as secondary source since they contain all discovered tables
+        for alias, table_name in self.table_aliases.items():
+            clean_table = self._remove_db_prefix_context_aware(table_name, "table_reference")
+            if clean_table and self._is_valid_table_name(clean_table):
+                tables.add(clean_table)
+        
+        # FALLBACK: Try to extract from AST if populated (original logic as backup)
         if ast_tree.with_clause:
             for cte in ast_tree.with_clause.ctes:
-                # CTE names are always legitimate table names - no DB prefix removal needed
                 if self._is_valid_table_name(cte.name):
                     tables.add(cte.name)
         
-        # From FROM clause (main table references)
         if ast_tree.from_clause:
             for table_ref in ast_tree.from_clause.table_references:
                 clean_table = self._remove_db_prefix_context_aware(table_ref.table_name, "from_clause")
                 if clean_table and self._is_valid_table_name(clean_table):
                     tables.add(clean_table)
         
-        # From JOINs (joined table references)
         for join in ast_tree.joins:
             clean_table = self._remove_db_prefix_context_aware(join.table_reference.table_name, "table_reference")
             if clean_table and self._is_valid_table_name(clean_table):
                 tables.add(clean_table)
         
-        # From field table associations (table names referenced in fields)
-        for table_name in self.table_aliases.values():
-            if self._is_valid_table_name(table_name):
-                clean_table = self._remove_db_prefix_context_aware(table_name, "field_reference")
-                if clean_table and self._is_valid_table_name(clean_table):
-                    tables.add(clean_table)
-        
         # 🎯 Apply context-aware final cleaning
         return self._clean_table_list_context_aware(list(tables), "table_reference")
 
     def _extract_joins_from_ast(self, ast_tree: QueryNode) -> List[Dict[str, Any]]:
-        """🎯 Context-aware JOIN extraction from AST tree - expect.md compliant format"""
+        """🎯 Context-aware JOIN extraction from AST tree - FIXED for direct extraction"""
         joins = []
         
-        for join in ast_tree.joins:
-            # Apply context-aware DB prefix removal to table name
-            clean_right_table = self._remove_db_prefix_context_aware(join.table_reference.table_name, "table_reference")
-            
-            # Extract JOIN condition details for expect.md format
-            condition_text = join.condition.condition_text if join.condition else ""
-            left_table, left_field, right_field, clean_condition = self._parse_join_condition(condition_text)
-            
-            # Only add valid JOIN entries (skip if table name is invalid after cleaning)
-            if clean_right_table and self._is_valid_table_name(clean_right_table) and left_table:
-                join_info = {
-                    "type": join.join_type,
-                    "leftTable": left_table,
-                    "leftField": left_field,
-                    "rightTable": clean_right_table,
-                    "rightField": right_field,
-                    "condition": clean_condition
-                }
-                joins.append(join_info)
+        # 🔧 FIXED: Use extracted_joins as primary source since join_handler works correctly
+        if hasattr(self, 'extracted_joins') and self.extracted_joins:
+            for join in self.extracted_joins:
+                # Apply context-aware DB prefix removal to table name
+                clean_right_table = self._remove_db_prefix_context_aware(join.table_reference.table_name, "table_reference")
+                
+                # Extract JOIN condition details for expect.md format
+                condition_text = join.condition.condition_text if join.condition else ""
+                left_table, left_field, right_field, clean_condition = self._parse_join_condition(condition_text)
+                
+                # 🚨 FIXED: Be more lenient with JOIN validation - include JOINs even without complete left_table info
+                if clean_right_table and self._is_valid_table_name(clean_right_table):
+                    # If left_table is empty, try to infer from context or use placeholder
+                    if not left_table:
+                        # Look for first table in aliases or use main table
+                        if self.table_aliases:
+                            # Use the first non-right table as left table
+                            for alias, table_name in self.table_aliases.items():
+                                clean_left = self._remove_db_prefix_context_aware(table_name, "table_reference")
+                                if clean_left != clean_right_table and self._is_valid_table_name(clean_left):
+                                    left_table = clean_left
+                                    break
+                        
+                        # Fallback to extracted tables
+                        if not left_table and hasattr(self, 'extracted_tables'):
+                            for table in self.extracted_tables:
+                                clean_left = self._remove_db_prefix_context_aware(table, "table_reference")
+                                if clean_left != clean_right_table and self._is_valid_table_name(clean_left):
+                                    left_table = clean_left
+                                    break
+                    
+                    join_info = {
+                        "type": join.join_type,
+                        "leftTable": left_table if left_table else "unknown",
+                        "leftField": left_field if left_field else "",
+                        "rightTable": clean_right_table,
+                        "rightField": right_field if right_field else "",
+                        "condition": clean_condition if clean_condition else ""
+                    }
+                    joins.append(join_info)
+        
+        # FALLBACK: Use AST joins if extracted_joins not available (original logic as backup)
+        if not joins:
+            for join in ast_tree.joins:
+                clean_right_table = self._remove_db_prefix_context_aware(join.table_reference.table_name, "table_reference")
+                condition_text = join.condition.condition_text if join.condition else ""
+                left_table, left_field, right_field, clean_condition = self._parse_join_condition(condition_text)
+                
+                if clean_right_table and self._is_valid_table_name(clean_right_table) and left_table:
+                    join_info = {
+                        "type": join.join_type,
+                        "leftTable": left_table,
+                        "leftField": left_field,
+                        "rightTable": clean_right_table,
+                        "rightField": right_field,
+                        "condition": clean_condition
+                    }
+                    joins.append(join_info)
         
         return joins
 

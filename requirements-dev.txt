@@ -1,0 +1,26 @@
+# SQL Splitter - Development Requirements
+
+# Testing framework
+pytest>=6.0.0
+pytest-cov>=2.12.0
+pytest-mock>=3.6.0
+
+# Code formatting and linting
+black>=21.0.0
+flake8>=3.9.0
+isort>=5.9.0
+
+# Type checking
+mypy>=0.900
+
+# Documentation
+sphinx>=4.0.0
+sphinx-rtd-theme>=0.5.0
+
+# Development tools
+pre-commit>=2.15.0
+tox>=3.24.0
+
+# Optional: Database testing (if needed)
+# mysql-connector-python>=8.0.0
+# pymysql>=1.0.0

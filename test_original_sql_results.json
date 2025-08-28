@@ -1,0 +1,1297 @@
+{
+  "test_summary": {
+    "test_type": "Original SQL Queries from expect.md",
+    "total_queries": 11,
+    "overall_success": 11,
+    "parse_success": 11,
+    "validation_success": 11,
+    "success_rate": 100.0,
+    "avg_execution_time": 0.0013892650604248047,
+    "enhanced_features_support": 100.0
+  },
+  "detailed_results": [
+    {
+      "query_name": "momo_mv_item",
+      "sql": "select date_format(`mt_item`.`iCreateT`,'%Y-%m') AS `i_month`,`mt_item`.`DetailsID` AS `DetailsID`,`...",
+      "sql_length": 1148,
+      "execution_time": 0.008639812469482422,
+      "parse_success": true,
+      "validation_success": true,
+      "overall_success": true,
+      "parser_output": {
+        "success": true,
+        "fields": [
+          {
+            "table": "",
+            "field": "date_format(`mt_item`.`iCreateT`,'%Y-%m') AS `i_month`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "expression"
+          },
+          {
+            "table": "",
+            "field": "`mt_item`.`DetailsID` AS `DetailsID`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_item`.`Details_OrderID` AS `Details_OrderID`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "expression"
+          },
+          {
+            "table": "",
+            "field": "`mt_item`.`iType` AS `iType`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_item`.`iDesc` AS `iDesc`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_item`.`iLink` AS `iLink`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_item`.`iQty` AS `iQty`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_item`.`iPrice` AS `iPrice`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_item`.`iStatus` AS `iStatus`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_item`.`iUpdateT` AS `iUpdateT`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mv_item_type_desc`.`DESC_NAME` AS `Type_Name`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mv_item_status_desc`.`DESC_NAME` AS `Status_NAME`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mv_item_status_desc`.`Remarks` AS `Remarks`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mv_order`.`Customer` AS `Customer`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "expression"
+          },
+          {
+            "table": "",
+            "field": "`mv_order`.`Order_Status_Name` AS `Order_status_name`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "expression"
+          },
+          {
+            "table": "",
+            "field": "`mv_order`.`Order_Status` AS `Order_Status`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "expression"
+          },
+          {
+            "table": "",
+            "field": "`mt_item`.`iPic` AS `iPic`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_item`.`igroup` AS `iGroup`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_item`.`iTrack` AS `iTrack`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "if(`mv_item_status_desc`.`Remarks` = 'finish',1,0) AS `finish`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "computed"
+          }
+        ],
+        "tables": [],
+        "joins": [],
+        "whereConditions": [
+          "`mt_item`.`iDeleted` < 1"
+        ],
+        "parser": "sqlsplit",
+        "metadata": {
+          "aliasMapping": {},
+          "aggregationFields": [],
+          "computedFields": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "unresolved": {
+            "aliases": [],
+            "fields": [
+              "`mt_item`.`DetailsID` AS `DetailsID`",
+              "`mt_item`.`iType` AS `iType`",
+              "`mt_item`.`iDesc` AS `iDesc`",
+              "`mt_item`.`iLink` AS `iLink`",
+              "`mt_item`.`iQty` AS `iQty`",
+              "`mt_item`.`iPrice` AS `iPrice`",
+              "`mt_item`.`iStatus` AS `iStatus`",
+              "`mt_item`.`iUpdateT` AS `iUpdateT`",
+              "`mv_item_type_desc`.`DESC_NAME` AS `Type_Name`",
+              "`mv_item_status_desc`.`DESC_NAME` AS `Status_NAME`",
+              "`mv_item_status_desc`.`Remarks` AS `Remarks`",
+              "`mt_item`.`iPic` AS `iPic`",
+              "`mt_item`.`igroup` AS `iGroup`",
+              "`mt_item`.`iTrack` AS `iTrack`"
+            ]
+          }
+        }
+      },
+      "validation_errors": [],
+      "error_count": 0,
+      "warning_count": 0,
+      "fields_count": 20,
+      "tables_count": 0,
+      "joins_count": 0,
+      "where_count": 1,
+      "has_metadata": true,
+      "has_enhanced_features": true,
+      "error_message": ""
+    },
+    {
+      "query_name": "momo_mv_item_status_desc",
+      "sql": "select `mt_status_desc`.`Desc_ID` AS `Desc_ID`,`mt_status_desc`.`DESC_NAME` AS `DESC_NAME`,`mt_statu...",
+      "sql_length": 331,
+      "execution_time": 0.0013413429260253906,
+      "parse_success": true,
+      "validation_success": true,
+      "overall_success": true,
+      "parser_output": {
+        "success": true,
+        "fields": [
+          {
+            "table": "",
+            "field": "`mt_status_desc`.`Desc_ID` AS `Desc_ID`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_status_desc`.`DESC_NAME` AS `DESC_NAME`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_status_desc`.`DESC_CODE` AS `DESC_CODE`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_status_desc`.`FOR_TABLE` AS `FOR_TABLE`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "expression"
+          },
+          {
+            "table": "",
+            "field": "`mt_status_desc`.`Remarks` AS `Remarks`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_status_desc`.`Item_Type` AS `Item_Type`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          }
+        ],
+        "tables": [],
+        "joins": [],
+        "whereConditions": [
+          "`mt_status_desc`.`FOR_TABLE` = 'iStatus'"
+        ],
+        "parser": "sqlsplit",
+        "metadata": {
+          "aliasMapping": {},
+          "aggregationFields": [],
+          "computedFields": [
+            ""
+          ],
+          "unresolved": {
+            "aliases": [],
+            "fields": [
+              "`mt_status_desc`.`Desc_ID` AS `Desc_ID`",
+              "`mt_status_desc`.`DESC_NAME` AS `DESC_NAME`",
+              "`mt_status_desc`.`DESC_CODE` AS `DESC_CODE`",
+              "`mt_status_desc`.`Remarks` AS `Remarks`",
+              "`mt_status_desc`.`Item_Type` AS `Item_Type`"
+            ]
+          }
+        }
+      },
+      "validation_errors": [],
+      "error_count": 0,
+      "warning_count": 0,
+      "fields_count": 6,
+      "tables_count": 0,
+      "joins_count": 0,
+      "where_count": 1,
+      "has_metadata": true,
+      "has_enhanced_features": true,
+      "error_message": ""
+    },
+    {
+      "query_name": "momo_mv_item_type_desc",
+      "sql": "select `mt_status_desc`.`Desc_ID` AS `Desc_ID`,`mt_status_desc`.`DESC_NAME` AS `DESC_NAME`,`mt_statu...",
+      "sql_length": 285,
+      "execution_time": 0.0006225109100341797,
+      "parse_success": true,
+      "validation_success": true,
+      "overall_success": true,
+      "parser_output": {
+        "success": true,
+        "fields": [
+          {
+            "table": "",
+            "field": "`mt_status_desc`.`Desc_ID` AS `Desc_ID`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_status_desc`.`DESC_NAME` AS `DESC_NAME`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_status_desc`.`DESC_CODE` AS `DESC_CODE`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_status_desc`.`FOR_TABLE` AS `FOR_TABLE`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "expression"
+          },
+          {
+            "table": "",
+            "field": "`mt_status_desc`.`Remarks` AS `Remarks`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          }
+        ],
+        "tables": [],
+        "joins": [],
+        "whereConditions": [
+          "`mt_status_desc`.`FOR_TABLE` = 'iType'"
+        ],
+        "parser": "sqlsplit",
+        "metadata": {
+          "aliasMapping": {},
+          "aggregationFields": [],
+          "computedFields": [
+            ""
+          ],
+          "unresolved": {
+            "aliases": [],
+            "fields": [
+              "`mt_status_desc`.`Desc_ID` AS `Desc_ID`",
+              "`mt_status_desc`.`DESC_NAME` AS `DESC_NAME`",
+              "`mt_status_desc`.`DESC_CODE` AS `DESC_CODE`",
+              "`mt_status_desc`.`Remarks` AS `Remarks`"
+            ]
+          }
+        }
+      },
+      "validation_errors": [],
+      "error_count": 0,
+      "warning_count": 0,
+      "fields_count": 5,
+      "tables_count": 0,
+      "joins_count": 0,
+      "where_count": 1,
+      "has_metadata": true,
+      "has_enhanced_features": true,
+      "error_message": ""
+    },
+    {
+      "query_name": "momo_mv_order",
+      "sql": "select `mt_order`.`OrderID` AS `OrderID`,`mt_order`.`Customer` AS `Customer`,`mt_order`.`Order_Statu...",
+      "sql_length": 407,
+      "execution_time": 0.0010209083557128906,
+      "parse_success": true,
+      "validation_success": true,
+      "overall_success": true,
+      "parser_output": {
+        "success": true,
+        "fields": [
+          {
+            "table": "",
+            "field": "`mt_order`.`OrderID` AS `OrderID`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "expression"
+          },
+          {
+            "table": "",
+            "field": "`mt_order`.`Customer` AS `Customer`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "expression"
+          },
+          {
+            "table": "",
+            "field": "`mt_order`.`Order_Status` AS `Order_Status`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "expression"
+          },
+          {
+            "table": "",
+            "field": "`mt_order`.`CreateDate` AS `CreateDate`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "expression"
+          },
+          {
+            "table": "",
+            "field": "`mt_order`.`UpdateDate` AS `UpdateDate`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "expression"
+          },
+          {
+            "table": "",
+            "field": "`mv_order_status_desc`.`DESC_NAME` AS `Order_Status_Name`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "expression"
+          }
+        ],
+        "tables": [],
+        "joins": [],
+        "whereConditions": [
+          "`mt_order`.`Deleted` < 1"
+        ],
+        "parser": "sqlsplit",
+        "metadata": {
+          "aliasMapping": {},
+          "aggregationFields": [],
+          "computedFields": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "unresolved": {
+            "aliases": [],
+            "fields": []
+          }
+        }
+      },
+      "validation_errors": [],
+      "error_count": 0,
+      "warning_count": 0,
+      "fields_count": 6,
+      "tables_count": 0,
+      "joins_count": 0,
+      "where_count": 1,
+      "has_metadata": true,
+      "has_enhanced_features": true,
+      "error_message": ""
+    },
+    {
+      "query_name": "momo_mv_order_status_desc",
+      "sql": "select `mt_status_desc`.`Desc_ID` AS `Desc_ID`,`mt_status_desc`.`DESC_NAME` AS `DESC_NAME`,`mt_statu...",
+      "sql_length": 292,
+      "execution_time": 0.0,
+      "parse_success": true,
+      "validation_success": true,
+      "overall_success": true,
+      "parser_output": {
+        "success": true,
+        "fields": [
+          {
+            "table": "",
+            "field": "`mt_status_desc`.`Desc_ID` AS `Desc_ID`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_status_desc`.`DESC_NAME` AS `DESC_NAME`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_status_desc`.`DESC_CODE` AS `DESC_CODE`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_status_desc`.`FOR_TABLE` AS `FOR_TABLE`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "expression"
+          },
+          {
+            "table": "",
+            "field": "`mt_status_desc`.`Remarks` AS `Remarks`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          }
+        ],
+        "tables": [],
+        "joins": [],
+        "whereConditions": [
+          "`mt_status_desc`.`FOR_TABLE` = 'Order_Status'"
+        ],
+        "parser": "sqlsplit",
+        "metadata": {
+          "aliasMapping": {},
+          "aggregationFields": [],
+          "computedFields": [
+            ""
+          ],
+          "unresolved": {
+            "aliases": [],
+            "fields": [
+              "`mt_status_desc`.`Desc_ID` AS `Desc_ID`",
+              "`mt_status_desc`.`DESC_NAME` AS `DESC_NAME`",
+              "`mt_status_desc`.`DESC_CODE` AS `DESC_CODE`",
+              "`mt_status_desc`.`Remarks` AS `Remarks`"
+            ]
+          }
+        }
+      },
+      "validation_errors": [],
+      "error_count": 0,
+      "warning_count": 0,
+      "fields_count": 5,
+      "tables_count": 0,
+      "joins_count": 0,
+      "where_count": 1,
+      "has_metadata": true,
+      "has_enhanced_features": true,
+      "error_message": ""
+    },
+    {
+      "query_name": "momo_mv_schedule",
+      "sql": "select `mt_schedule`.`ID` AS `ID`,concat(`mt_schedule`.`Title`,' ',date_format(`mt_schedule`.`Start_...",
+      "sql_length": 628,
+      "execution_time": 0.0,
+      "parse_success": true,
+      "validation_success": true,
+      "overall_success": true,
+      "parser_output": {
+        "success": true,
+        "fields": [
+          {
+            "table": "",
+            "field": "`mt_schedule`.`ID` AS `ID`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "concat(`mt_schedule`.`Title`,' ',date_format(`mt_schedule`.`Start_DT`,'%H:%i')) AS `Title`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "expression"
+          },
+          {
+            "table": "",
+            "field": "`mt_schedule`.`sDesc` AS `sDesc`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_schedule`.`Start_DT` AS `Start_DT`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_schedule`.`End_DT` AS `End_DT`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_schedule`.`Color` AS `Color`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "expression"
+          },
+          {
+            "table": "",
+            "field": "`mt_schedule`.`sStatus` AS `sStatus`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_schedule`.`Create_DT` AS `Create_DT`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_schedule`.`CreateBy` AS `CreateBy`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_schedule`.`Edit_DT` AS `Edit_DT`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_schedule`.`EditBy` AS `EditBy`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_schedule`.`Deleted` AS `Deleted`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_weekdays`.`weekdays` AS `weekdays`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          }
+        ],
+        "tables": [],
+        "joins": [],
+        "whereConditions": [
+          "`mt_schedule`.`weekdays` = `mt_weekdays`.`weekdays_id`"
+        ],
+        "parser": "sqlsplit",
+        "metadata": {
+          "aliasMapping": {},
+          "aggregationFields": [],
+          "computedFields": [
+            "",
+            ""
+          ],
+          "unresolved": {
+            "aliases": [],
+            "fields": [
+              "`mt_schedule`.`ID` AS `ID`",
+              "`mt_schedule`.`sDesc` AS `sDesc`",
+              "`mt_schedule`.`Start_DT` AS `Start_DT`",
+              "`mt_schedule`.`End_DT` AS `End_DT`",
+              "`mt_schedule`.`sStatus` AS `sStatus`",
+              "`mt_schedule`.`Create_DT` AS `Create_DT`",
+              "`mt_schedule`.`CreateBy` AS `CreateBy`",
+              "`mt_schedule`.`Edit_DT` AS `Edit_DT`",
+              "`mt_schedule`.`EditBy` AS `EditBy`",
+              "`mt_schedule`.`Deleted` AS `Deleted`",
+              "`mt_weekdays`.`weekdays` AS `weekdays`"
+            ]
+          }
+        }
+      },
+      "validation_errors": [],
+      "error_count": 0,
+      "warning_count": 0,
+      "fields_count": 13,
+      "tables_count": 0,
+      "joins_count": 0,
+      "where_count": 1,
+      "has_metadata": true,
+      "has_enhanced_features": true,
+      "error_message": ""
+    },
+    {
+      "query_name": "momo_mv_weekdays",
+      "sql": "select `mt_status_desc`.`Desc_ID` AS `Desc_ID`,`mt_status_desc`.`DESC_NAME` AS `DESC_NAME`,`mt_statu...",
+      "sql_length": 288,
+      "execution_time": 0.002015829086303711,
+      "parse_success": true,
+      "validation_success": true,
+      "overall_success": true,
+      "parser_output": {
+        "success": true,
+        "fields": [
+          {
+            "table": "",
+            "field": "`mt_status_desc`.`Desc_ID` AS `Desc_ID`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_status_desc`.`DESC_NAME` AS `DESC_NAME`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_status_desc`.`DESC_CODE` AS `DESC_CODE`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_status_desc`.`FOR_TABLE` AS `FOR_TABLE`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "expression"
+          },
+          {
+            "table": "",
+            "field": "`mt_status_desc`.`Remarks` AS `Remarks`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          }
+        ],
+        "tables": [],
+        "joins": [],
+        "whereConditions": [
+          "`mt_status_desc`.`FOR_TABLE` = 'weekdays'"
+        ],
+        "parser": "sqlsplit",
+        "metadata": {
+          "aliasMapping": {},
+          "aggregationFields": [],
+          "computedFields": [
+            ""
+          ],
+          "unresolved": {
+            "aliases": [],
+            "fields": [
+              "`mt_status_desc`.`Desc_ID` AS `Desc_ID`",
+              "`mt_status_desc`.`DESC_NAME` AS `DESC_NAME`",
+              "`mt_status_desc`.`DESC_CODE` AS `DESC_CODE`",
+              "`mt_status_desc`.`Remarks` AS `Remarks`"
+            ]
+          }
+        }
+      },
+      "validation_errors": [],
+      "error_count": 0,
+      "warning_count": 0,
+      "fields_count": 5,
+      "tables_count": 0,
+      "joins_count": 0,
+      "where_count": 1,
+      "has_metadata": true,
+      "has_enhanced_features": true,
+      "error_message": ""
+    },
+    {
+      "query_name": "momo_mv_test",
+      "sql": "select `mt_test`.`id` AS `id`,`mt_test`.`Remark` AS `Remark`,date_format(`mt_test`.`SDateTime`,'%Y-%...",
+      "sql_length": 245,
+      "execution_time": 0.0,
+      "parse_success": true,
+      "validation_success": true,
+      "overall_success": true,
+      "parser_output": {
+        "success": true,
+        "fields": [
+          {
+            "table": "",
+            "field": "`mt_test`.`id` AS `id`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_test`.`Remark` AS `Remark`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "date_format(`mt_test`.`SDateTime`,'%Y-%m-%d') AS `Date_only`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "expression"
+          },
+          {
+            "table": "",
+            "field": "`mt_test`.`SDateTime` AS `SDateTime`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_test`.`EDateTime` AS `EDateTime`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_test`.`All_days` AS `All_days`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          }
+        ],
+        "tables": [],
+        "joins": [],
+        "whereConditions": [],
+        "parser": "sqlsplit",
+        "metadata": {
+          "aliasMapping": {},
+          "aggregationFields": [],
+          "computedFields": [
+            ""
+          ],
+          "unresolved": {
+            "aliases": [],
+            "fields": [
+              "`mt_test`.`id` AS `id`",
+              "`mt_test`.`Remark` AS `Remark`",
+              "`mt_test`.`SDateTime` AS `SDateTime`",
+              "`mt_test`.`EDateTime` AS `EDateTime`",
+              "`mt_test`.`All_days` AS `All_days`"
+            ]
+          }
+        }
+      },
+      "validation_errors": [],
+      "error_count": 0,
+      "warning_count": 0,
+      "fields_count": 6,
+      "tables_count": 0,
+      "joins_count": 0,
+      "where_count": 0,
+      "has_metadata": true,
+      "has_enhanced_features": true,
+      "error_message": ""
+    },
+    {
+      "query_name": "momo_mv_tracking",
+      "sql": "select `mt_tracking`.`tID` AS `tID`,`mt_tracking`.`tiName` AS `tiName`,`mt_tracking`.`tiType` AS `ti...",
+      "sql_length": 1064,
+      "execution_time": 0.001077413558959961,
+      "parse_success": true,
+      "validation_success": true,
+      "overall_success": true,
+      "parser_output": {
+        "success": true,
+        "fields": [
+          {
+            "table": "",
+            "field": "`mt_tracking`.`tID` AS `tID`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_tracking`.`tiName` AS `tiName`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_tracking`.`tiType` AS `tiType`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_tracking`.`tiPrice` AS `tiPrice`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_tracking`.`tTrackID` AS `tTrackID`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_tracking`.`tDesc` AS `tDesc`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_tracking`.`tStatus` AS `tStatus`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_tracking`.`tQTY` AS `tQTY`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_tracking`.`tCreateDate` AS `tCreateDate`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_tracking`.`tCreateBy` AS `tCreateBy`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_tracking`.`tEditDate` AS `tEditDate`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_tracking`.`tEditBy` AS `tEditBy`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_tracking`.`tRemarks` AS `tRemarks`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_tracking`.`tDelete` AS `tDelete`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_tracking`.`uid` AS `uid`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_tracking`.`tLastupdate` AS `tLastupdate`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mv_item_type_desc`.`DESC_NAME` AS `Type_Name`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mv_item_status_desc`.`DESC_NAME` AS `Status_NAME`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "if(`mv_item_status_desc`.`Remarks` = 'finish',1,0) AS `finish`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "computed"
+          }
+        ],
+        "tables": [],
+        "joins": [],
+        "whereConditions": [
+          "`mt_tracking`.`tDelete` = 0"
+        ],
+        "parser": "sqlsplit",
+        "metadata": {
+          "aliasMapping": {},
+          "aggregationFields": [],
+          "computedFields": [
+            ""
+          ],
+          "unresolved": {
+            "aliases": [],
+            "fields": [
+              "`mt_tracking`.`tID` AS `tID`",
+              "`mt_tracking`.`tiName` AS `tiName`",
+              "`mt_tracking`.`tiType` AS `tiType`",
+              "`mt_tracking`.`tiPrice` AS `tiPrice`",
+              "`mt_tracking`.`tTrackID` AS `tTrackID`",
+              "`mt_tracking`.`tDesc` AS `tDesc`",
+              "`mt_tracking`.`tStatus` AS `tStatus`",
+              "`mt_tracking`.`tQTY` AS `tQTY`",
+              "`mt_tracking`.`tCreateDate` AS `tCreateDate`",
+              "`mt_tracking`.`tCreateBy` AS `tCreateBy`",
+              "`mt_tracking`.`tEditDate` AS `tEditDate`",
+              "`mt_tracking`.`tEditBy` AS `tEditBy`",
+              "`mt_tracking`.`tRemarks` AS `tRemarks`",
+              "`mt_tracking`.`tDelete` AS `tDelete`",
+              "`mt_tracking`.`uid` AS `uid`",
+              "`mt_tracking`.`tLastupdate` AS `tLastupdate`",
+              "`mv_item_type_desc`.`DESC_NAME` AS `Type_Name`",
+              "`mv_item_status_desc`.`DESC_NAME` AS `Status_NAME`"
+            ]
+          }
+        }
+      },
+      "validation_errors": [],
+      "error_count": 0,
+      "warning_count": 0,
+      "fields_count": 19,
+      "tables_count": 0,
+      "joins_count": 0,
+      "where_count": 1,
+      "has_metadata": true,
+      "has_enhanced_features": true,
+      "error_message": ""
+    },
+    {
+      "query_name": "momo_v_cost",
+      "sql": "select date_format(`t_cost`.`c_time`,'%Y-%m') AS `c_month`,date_format(`t_cost`.`c_time`,'%Y-%m-%d %...",
+      "sql_length": 442,
+      "execution_time": 0.0,
+      "parse_success": true,
+      "validation_success": true,
+      "overall_success": true,
+      "parser_output": {
+        "success": true,
+        "fields": [
+          {
+            "table": "",
+            "field": "date_format(`t_cost`.`c_time`,'%Y-%m') AS `c_month`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "expression"
+          },
+          {
+            "table": "",
+            "field": "date_format(`t_cost`.`c_time`,'%Y-%m-%d %a') AS `c_date`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "expression"
+          },
+          {
+            "table": "",
+            "field": "`t_cost`.`ID` AS `ID`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`t_cost`.`category` AS `category`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "expression"
+          },
+          {
+            "table": "",
+            "field": "`mt_cost_category`.`cat_desc` AS `cat_desc`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "expression"
+          },
+          {
+            "table": "",
+            "field": "`t_cost`.`c_desc` AS `c_desc`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`t_cost`.`c_price` AS `c_price`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`t_cost`.`c_time` AS `c_time`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`t_cost`.`edit_time` AS `edit_time`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          }
+        ],
+        "tables": [],
+        "joins": [],
+        "whereConditions": [],
+        "parser": "sqlsplit",
+        "metadata": {
+          "aliasMapping": {},
+          "aggregationFields": [],
+          "computedFields": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "unresolved": {
+            "aliases": [],
+            "fields": [
+              "`t_cost`.`ID` AS `ID`",
+              "`t_cost`.`c_desc` AS `c_desc`",
+              "`t_cost`.`c_price` AS `c_price`",
+              "`t_cost`.`c_time` AS `c_time`",
+              "`t_cost`.`edit_time` AS `edit_time`"
+            ]
+          }
+        }
+      },
+      "validation_errors": [],
+      "error_count": 0,
+      "warning_count": 0,
+      "fields_count": 9,
+      "tables_count": 0,
+      "joins_count": 0,
+      "where_count": 0,
+      "has_metadata": true,
+      "has_enhanced_features": true,
+      "error_message": ""
+    },
+    {
+      "query_name": "momo_v_game",
+      "sql": "select `mt_game_header`.`id_game` AS `id_game`,`mt_game_header`.`Create_datetime` AS `Create_datetim...",
+      "sql_length": 718,
+      "execution_time": 0.0005640983581542969,
+      "parse_success": true,
+      "validation_success": true,
+      "overall_success": true,
+      "parser_output": {
+        "success": true,
+        "fields": [
+          {
+            "table": "",
+            "field": "`mt_game_header`.`id_game` AS `id_game`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_game_header`.`Create_datetime` AS `Create_datetime`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_game_header`.`Created_by` AS `Created_by`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_game_header`.`title` AS `title`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_game_header`.`option_i` AS `option_i`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_game_header`.`option_vs` AS `option_vs`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_game_details`.`id_gameDetails` AS `id_gameDetails`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_game_details`.`d_Create_datetime` AS `d_Create_datetime`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_game_details`.`d_Created_by` AS `d_Created_by`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_game_details`.`selected` AS `selected`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          },
+          {
+            "table": "",
+            "field": "`mt_game_link`.`id_link` AS `id_link`",
+            "alias": "",
+            "groupBy": false,
+            "fieldType": "column"
+          }
+        ],
+        "tables": [],
+        "joins": [],
+        "whereConditions": [],
+        "parser": "sqlsplit",
+        "metadata": {
+          "aliasMapping": {},
+          "aggregationFields": [],
+          "computedFields": [],
+          "unresolved": {
+            "aliases": [],
+            "fields": [
+              "`mt_game_header`.`id_game` AS `id_game`",
+              "`mt_game_header`.`Create_datetime` AS `Create_datetime`",
+              "`mt_game_header`.`Created_by` AS `Created_by`",
+              "`mt_game_header`.`title` AS `title`",
+              "`mt_game_header`.`option_i` AS `option_i`",
+              "`mt_game_header`.`option_vs` AS `option_vs`",
+              "`mt_game_details`.`id_gameDetails` AS `id_gameDetails`",
+              "`mt_game_details`.`d_Create_datetime` AS `d_Create_datetime`",
+              "`mt_game_details`.`d_Created_by` AS `d_Created_by`",
+              "`mt_game_details`.`selected` AS `selected`",
+              "`mt_game_link`.`id_link` AS `id_link`"
+            ]
+          }
+        }
+      },
+      "validation_errors": [],
+      "error_count": 0,
+      "warning_count": 0,
+      "fields_count": 11,
+      "tables_count": 0,
+      "joins_count": 0,
+      "where_count": 0,
+      "has_metadata": true,
+      "has_enhanced_features": true,
+      "error_message": ""
+    }
+  ]
+}

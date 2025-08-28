@@ -1,0 +1,8 @@
+# SQL Splitter - Production Requirements
+# Pure Python implementation with no external dependencies
+
+# Development and Testing Dependencies (optional)
+# Install with: pip install -r requirements-dev.txt
+
+# Core functionality requires Python 3.7+ only
+# No external dependencies needed for production use
